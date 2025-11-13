@@ -1,0 +1,7 @@
+/home/minh/Documents/tencat/react-base/.devenv/flake.json
+/home/minh/Documents/tencat/react-base/.devenv.flake.nix
+/home/minh/Documents/tencat/react-base/.env
+/home/minh/Documents/tencat/react-base/devenv.local.nix
+/home/minh/Documents/tencat/react-base/devenv.lock
+/home/minh/Documents/tencat/react-base/devenv.nix
+/home/minh/Documents/tencat/react-base/devenv.yaml

@@ -1,299 +1,530 @@
-Welcome to your new TanStack app! 
+# React Base
 
-# Getting Started
+A modern, scalable React application template built with TanStack Router, Vite, TypeScript, and Tailwind CSS. This starter kit provides a solid foundation for building robust web applications with best practices and essential tooling pre-configured.
 
-To run this application:
+## Table of Contents
+
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Development](#development)
+- [Project Structure](#project-structure)
+- [Configuration](#configuration)
+- [Routing](#routing)
+- [Styling](#styling)
+- [Testing](#testing)
+- [Building for Production](#building-for-production)
+- [Deployment](#deployment)
+- [Environment Variables](#environment-variables)
+- [API Integration](#api-integration)
+- [State Management](#state-management)
+- [Performance](#performance)
+- [Contributing](#contributing)
+- [License](#license)
+- [Acknowledgments](#acknowledgments)
+
+## Features
+
+- ⚛️ **React 19** - Latest version of React with modern features
+- 🚀 **TanStack Router** - File-based routing with type safety
+- ⚡ **Vite** - Fast build tool and development server
+- 🎨 **Tailwind CSS** - Utility-first CSS framework
+- 🔤 **TypeScript** - Static type checking for better code quality
+- 🧪 **Vitest** - Fast unit testing framework
+- 📦 **Bun** - Fast JavaScript runtime and package manager
+- 🔍 **TanStack Devtools** - Advanced debugging tools
+- 🎨 **Shadcn UI** - Pre-built accessible UI components
+- 🎯 **Lucide React** - Beautiful icon library
+- 🏗️ **Modern project structure** - Clean and organized code organization
+
+## Prerequisites
+
+Before you begin, ensure you have the following installed on your system:
+
+- [Bun](https://bun.sh/) (v1.0 or higher) or Node.js (v18 or higher) and npm
+- Git
+
+## Development Environment Setup
+
+This project uses [devenv](https://devenv.sh/) to manage the development environment. devenv provides a reproducible development environment with all necessary tools and dependencies pre-configured.
+
+### Installing devenv
+
+1. Install Nix package manager (if not already installed):
+
+```bash
+curl -L https://nixos.org/nix/install | sh
+```
+
+2. Enable experimental features:
+
+```bash
+echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
+```
+
+3. Install devenv:
+
+```bash
+nix profile install github:cachix/devenv
+```
+
+### Setting up the Development Environment
+
+1. Navigate to the project directory:
+
+```bash
+cd react-base
+```
+
+2. Activate the development environment:
+
+```bash
+devenv up
+```
+
+This will automatically install and configure:
+
+- Node.js (version specified in devenv configuration)
+- Bun package manager
+- Git
+- TypeScript
+- All necessary development dependencies
+
+### Alternative Manual Setup
+
+If you prefer not to use devenv, you can set up the environment manually:
+
+1. Install Node.js (v18 or higher) or Bun
+2. Install Git
+3. Install TypeScript globally (optional): `npm install -g typescript`
+
+### Environment Variables
+
+The development environment supports the following configuration:
+
+- `.envrc` - Environment variables for direnv (if using direnv with devenv)
+- `.env` - Default environment variables
+- `.env.local` - Local overrides (git-ignored)
+
+For local development, create a `.env.local` file with your specific configuration:
+
+```env
+VITE_API_URL=http://localhost:8000
+VITE_DEBUG=true
+```
+
+## Installation
+
+1. Clone the repository:
+
+```bash
+git clone <repository-url>
+cd react-base
+```
+
+2. Install dependencies:
 
 ```bash
 bun install
-bun --bun run start
 ```
 
-# Building For Production
-
-To build this application for production:
+3. Start the development server:
 
 ```bash
-bun --bun run build
+bun run dev
 ```
 
-## Testing
+4. Open your browser and navigate to `http://localhost:3000`
 
-This project uses [Vitest](https://vitest.dev/) for testing. You can run the tests with:
+## Development
+
+### Starting the Development Server
 
 ```bash
-bun --bun run test
+bun run dev
 ```
+
+This command starts the Vite development server with hot module replacement. The application will be available at `http://localhost:3000`.
+
+### Available Scripts
+
+- `bun run dev` - Start the development server
+- `bun run build` - Build the application for production
+- `bun run serve` - Preview the production build locally
+- `bun run test` - Run the test suite
+
+### Project Structure
+
+```
+react-base/
+├── public/                 # Static assets
+│   ├── favicon.ico
+│   ├── logo192.png
+│   ├── logo512.png
+│   ├── manifest.json
+│   ├── robots.txt
+│   ├── tanstack-circle-logo.png
+│   └── tanstack-word-logo-white.svg
+├── src/                    # Source code
+│   ├── components/         # Reusable UI components
+│   │   └── Header.tsx
+│   ├── lib/               # Utility functions and libraries
+│   │   └── utils.ts
+│   ├── routes/            # Route components (file-based routing)
+│   │   ├── __root.tsx
+│   │   └── index.tsx
+│   ├── main.tsx           # Application entry point
+│   ├── routeTree.gen.ts   # Generated route tree
+│   ├── styles.css         # Global styles
+│   └── logo.svg
+├── .envrc                 # Environment configuration
+├── .gitignore
+├── bun.lock               # Bun lock file
+├── components.json        # Component library configuration
+├── index.html             # HTML template
+├── LICENSE
+├── package.json
+├── README.md
+├── tsconfig.json          # TypeScript configuration
+└── vite.config.ts         # Vite configuration
+```
+
+## Configuration
+
+### TypeScript Configuration
+
+The project uses TypeScript with the following configuration in `tsconfig.json`:
+
+- Strict mode enabled
+- Module resolution set to Node
+- JSX support for React
+- ES2020 target for modern browser support
+
+### Vite Configuration
+
+Vite is configured in `vite.config.ts` with:
+
+- React plugin for JSX transformation
+- Tailwind CSS integration
+- TanStack Router plugin for file-based routing
+- TanStack Devtools for enhanced debugging
+- Path alias `@` pointing to `src/` directory
+
+### Tailwind CSS Configuration
+
+Tailwind CSS is configured with:
+
+- Modern CSS features
+- Responsive design utilities
+- Custom color palette
+- Plugin support for animations
+
+## Routing
+
+This project uses TanStack Router with file-based routing. Routes are defined as files in the `src/routes/` directory:
+
+- `__root.tsx` - Root layout component that wraps all routes
+- `index.tsx` - Home page route
+
+### Adding New Routes
+
+To add a new route, create a new file in the `src/routes/` directory. For example, to create an "about" page:
+
+1. Create `src/routes/about.tsx`
+2. Export a component as the default export
+
+The router will automatically detect the new route and make it available at `/about`.
+
+### Navigation
+
+Use the `Link` component from `@tanstack/react-router` for client-side navigation:
+
+```tsx
+import { Link } from "@tanstack/react-router";
+
+function Navigation() {
+  return (
+    <nav>
+      <Link to="/">Home</Link>
+      <Link to="/about">About</Link>
+    </nav>
+  );
+}
+```
+
+### Layouts
+
+Layouts are implemented using the root route in `src/routes/__root.tsx`. Any content in this file will appear on all pages. The `<Outlet />` component renders the content of the current route.
 
 ## Styling
 
-This project uses [Tailwind CSS](https://tailwindcss.com/) for styling.
+### Tailwind CSS
 
+The project uses Tailwind CSS for styling with the following features:
 
+- Utility-first approach for rapid UI development
+- Responsive design utilities
+- Dark mode support
+- Custom configuration for project-specific needs
 
-## Shadcn
+### Global Styles
 
-Add components using the latest version of [Shadcn](https://ui.shadcn.com/).
+Global styles are defined in `src/styles.css` and include:
+
+- CSS reset
+- Base styles
+- Typography
+- Custom utility classes
+
+### Component Styling
+
+Components can be styled using Tailwind utility classes directly in the JSX. For more complex styling needs, you can create custom CSS classes in the global styles file.
+
+## Testing
+
+### Running Tests
 
 ```bash
-pnpx shadcn@latest add button
+bun run test
 ```
 
+The project uses Vitest for unit testing with the following configuration:
 
+- JSDOM environment for browser-like testing
+- React testing library for component testing
+- TypeScript support
 
-## Routing
-This project uses [TanStack Router](https://tanstack.com/router). The initial setup is a file based router. Which means that the routes are managed as files in `src/routes`.
+### Writing Tests
 
-### Adding A Route
-
-To add a new route to your application just add another a new file in the `./src/routes` directory.
-
-TanStack will automatically generate the content of the route file for you.
-
-Now that you have two routes you can use a `Link` component to navigate between them.
-
-### Adding Links
-
-To use SPA (Single Page Application) navigation you will need to import the `Link` component from `@tanstack/react-router`.
+Tests should be placed in files with `.test.tsx` or `.spec.tsx` extension. Example test:
 
 ```tsx
-import { Link } from "@tanstack/react-router";
+import { render, screen } from "@testing-library/react";
+import { describe, it, expect } from "vitest";
+import App from "./App";
+
+describe("App", () => {
+  it("renders without crashing", () => {
+    render(<App />);
+    expect(screen.getByText(/welcome/i)).toBeInTheDocument();
+  });
+});
 ```
 
-Then anywhere in your JSX you can use it like so:
+## Building for Production
 
-```tsx
-<Link to="/about">About</Link>
+### Creating a Production Build
+
+```bash
+bun run build
 ```
 
-This will create a link that will navigate to the `/about` route.
+This command creates an optimized production build in the `dist/` directory. The build includes:
 
-More information on the `Link` component can be found in the [Link documentation](https://tanstack.com/router/v1/docs/framework/react/api/router/linkComponent).
+- Minified JavaScript and CSS
+- Asset optimization
+- Tree-shaking for smaller bundle sizes
+- Type checking with TypeScript
 
-### Using A Layout
+### Previewing Production Build
 
-In the File Based Routing setup the layout is located in `src/routes/__root.tsx`. Anything you add to the root route will appear in all the routes. The route content will appear in the JSX where you use the `<Outlet />` component.
-
-Here is an example layout that includes a header:
-
-```tsx
-import { Outlet, createRootRoute } from '@tanstack/react-router'
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
-
-import { Link } from "@tanstack/react-router";
-
-export const Route = createRootRoute({
-  component: () => (
-    <>
-      <header>
-        <nav>
-          <Link to="/">Home</Link>
-          <Link to="/about">About</Link>
-        </nav>
-      </header>
-      <Outlet />
-      <TanStackRouterDevtools />
-    </>
-  ),
-})
+```bash
+bun run serve
 ```
 
-The `<TanStackRouterDevtools />` component is not required so you can remove it if you don't want it in your layout.
+This command serves the production build locally for testing purposes.
 
-More information on layouts can be found in the [Layouts documentation](https://tanstack.com/router/latest/docs/framework/react/guide/routing-concepts#layouts).
+## Deployment
 
+### Static Hosting
 
-## Data Fetching
+The production build creates static files that can be deployed to any static hosting service:
 
-There are multiple ways to fetch data in your application. You can use TanStack Query to fetch data from a server. But you can also use the `loader` functionality built into TanStack Router to load the data for a route before it's rendered.
+- Netlify
+- Vercel
+- GitHub Pages
+- AWS S3
+- Cloudflare Pages
 
-For example:
+### Deployment Steps
+
+1. Build the application: `bun run build`
+2. Upload the contents of the `dist/` directory to your hosting service
+3. Configure your hosting service to serve the `index.html` file for all routes
+
+### Environment-Specific Configuration
+
+For different deployment environments, use environment variables as described in the [Environment Variables](#environment-variables) section.
+
+## Environment Variables
+
+### Using Environment Variables
+
+Environment variables are loaded from `.env` files and prefixed with `VITE_` for client-side access:
+
+1. Create a `.env` file in the root directory
+2. Add variables with the `VITE_` prefix:
+
+```env
+VITE_API_URL=https://api.example.com
+VITE_APP_NAME=My App
+```
+
+3. Access in your code:
 
 ```tsx
-const peopleRoute = createRoute({
+const apiUrl = import.meta.env.VITE_API_URL;
+```
+
+### Environment Files
+
+- `.env` - Default environment variables
+- `.env.local` - Local overrides (git-ignored)
+- `.env.production` - Production-specific variables
+- `.env.development` - Development-specific variables
+
+## API Integration
+
+### Making API Calls
+
+The project includes support for data fetching with TanStack Router's built-in loader functionality:
+
+```tsx
+import { createRoute } from "@tanstack/react-router";
+
+const dataRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: "/people",
+  path: "/data",
   loader: async () => {
-    const response = await fetch("https://swapi.dev/api/people");
-    return response.json() as Promise<{
-      results: {
-        name: string;
-      }[];
-    }>;
+    const response = await fetch(import.meta.env.VITE_API_URL + "/data");
+    return response.json();
   },
   component: () => {
-    const data = peopleRoute.useLoaderData();
-    return (
-      <ul>
-        {data.results.map((person) => (
-          <li key={person.name}>{person.name}</li>
-        ))}
-      </ul>
-    );
+    const data = dataRoute.useLoaderData();
+    return <div>{JSON.stringify(data)}</div>;
   },
 });
 ```
 
-Loaders simplify your data fetching logic dramatically. Check out more information in the [Loader documentation](https://tanstack.com/router/latest/docs/framework/react/guide/data-loading#loader-parameters).
+### Using TanStack Query (Optional)
 
-### React-Query
-
-React-Query is an excellent addition or alternative to route loading and integrating it into you application is a breeze.
-
-First add your dependencies:
+For more advanced data fetching needs, you can integrate TanStack Query:
 
 ```bash
 bun install @tanstack/react-query @tanstack/react-query-devtools
 ```
 
-Next we'll need to create a query client and provider. We recommend putting those in `main.tsx`.
+Then configure it in your `main.tsx`:
 
 ```tsx
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-// ...
-
 const queryClient = new QueryClient();
 
-// ...
-
-if (!rootElement.innerHTML) {
-  const root = ReactDOM.createRoot(rootElement);
-
-  root.render(
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-    </QueryClientProvider>
-  );
-}
+root.render(
+  <QueryClientProvider client={queryClient}>
+    <RouterProvider router={router} />
+  </QueryClientProvider>
+);
 ```
-
-You can also add TanStack Query Devtools to the root route (optional).
-
-```tsx
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-
-const rootRoute = createRootRoute({
-  component: () => (
-    <>
-      <Outlet />
-      <ReactQueryDevtools buttonPosition="top-right" />
-      <TanStackRouterDevtools />
-    </>
-  ),
-});
-```
-
-Now you can use `useQuery` to fetch your data.
-
-```tsx
-import { useQuery } from "@tanstack/react-query";
-
-import "./App.css";
-
-function App() {
-  const { data } = useQuery({
-    queryKey: ["people"],
-    queryFn: () =>
-      fetch("https://swapi.dev/api/people")
-        .then((res) => res.json())
-        .then((data) => data.results as { name: string }[]),
-    initialData: [],
-  });
-
-  return (
-    <div>
-      <ul>
-        {data.map((person) => (
-          <li key={person.name}>{person.name}</li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
-export default App;
-```
-
-You can find out everything you need to know on how to use React-Query in the [React-Query documentation](https://tanstack.com/query/latest/docs/framework/react/overview).
 
 ## State Management
 
-Another common requirement for React applications is state management. There are many options for state management in React. TanStack Store provides a great starting point for your project.
+### Built-in React State
 
-First you need to add TanStack Store as a dependency:
+For component-level state, use React's built-in hooks:
+
+- `useState` for local state
+- `useContext` for global state
+- `useReducer` for complex state logic
+
+### TanStack Store (Optional)
+
+For global state management, you can use TanStack Store:
 
 ```bash
 bun install @tanstack/store
 ```
 
-Now let's create a simple counter in the `src/App.tsx` file as a demonstration.
+Example usage:
 
 ```tsx
 import { useStore } from "@tanstack/react-store";
 import { Store } from "@tanstack/store";
-import "./App.css";
 
 const countStore = new Store(0);
 
-function App() {
+function Counter() {
   const count = useStore(countStore);
   return (
-    <div>
-      <button onClick={() => countStore.setState((n) => n + 1)}>
-        Increment - {count}
-      </button>
-    </div>
+    <button onClick={() => countStore.setState((n) => n + 1)}>
+      Count: {count}
+    </button>
   );
 }
-
-export default App;
 ```
 
-One of the many nice features of TanStack Store is the ability to derive state from other state. That derived state will update when the base state updates.
+## Performance
 
-Let's check this out by doubling the count using derived state.
+### Optimizations Included
+
+- Bundle splitting with Vite
+- Tree-shaking for unused code
+- Lazy loading for routes
+- Optimized image loading
+- Efficient rendering with React 19
+
+### Performance Monitoring
+
+The project includes Web Vitals reporting to monitor performance metrics:
 
 ```tsx
-import { useStore } from "@tanstack/react-store";
-import { Store, Derived } from "@tanstack/store";
-import "./App.css";
+import reportWebVitals from "./reportWebVitals";
 
-const countStore = new Store(0);
-
-const doubledStore = new Derived({
-  fn: () => countStore.state * 2,
-  deps: [countStore],
-});
-doubledStore.mount();
-
-function App() {
-  const count = useStore(countStore);
-  const doubledCount = useStore(doubledStore);
-
-  return (
-    <div>
-      <button onClick={() => countStore.setState((n) => n + 1)}>
-        Increment - {count}
-      </button>
-      <div>Doubled - {doubledCount}</div>
-    </div>
-  );
-}
-
-export default App;
+reportWebVitals(console.log);
 ```
 
-We use the `Derived` class to create a new store that is derived from another store. The `Derived` class has a `mount` method that will start the derived store updating.
+## Contributing
 
-Once we've created the derived store we can use it in the `App` component just like we would any other store using the `useStore` hook.
+### Development Setup
 
-You can find out everything you need to know on how to use TanStack Store in the [TanStack Store documentation](https://tanstack.com/store/latest).
+1. Fork the repository
+2. Clone your fork: `git clone https://github.com/your-username/react-base.git`
+3. Install dependencies: `bun install`
+4. Create a branch: `git checkout -b feature-name`
+5. Make your changes
+6. Test your changes: `bun run test`
+7. Commit your changes: `git commit -m "Add feature"`
+8. Push to your fork: `git push origin feature-name`
+9. Open a pull request
 
-# Demo files
+### Code Standards
 
-Files prefixed with `demo` can be safely deleted. They are there to provide a starting point for you to play around with the features you've installed.
+- Follow the existing code style
+- Write TypeScript types for all public APIs
+- Add tests for new functionality
+- Update documentation as needed
+- Use descriptive commit messages
 
-# Learn More
+### Development Guidelines
 
-You can learn more about all of the offerings from TanStack in the [TanStack documentation](https://tanstack.com).
+- Keep components small and focused
+- Use TypeScript for type safety
+- Follow accessibility best practices
+- Write meaningful test cases
+- Document complex logic with comments
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- [TanStack](https://tanstack.com/) - For the excellent router and other tools
+- [Vite](https://vitejs.dev/) - For the fast build tool
+- [Tailwind CSS](https://tailwindcss.com/) - For the utility-first CSS framework
+- [React](https://react.dev/) - For the UI library
+- [Bun](https://bun.sh/) - For the fast JavaScript runtime
+- [TypeScript](https://www.typescriptlang.org/) - For static type checking
+- [Lucide React](https://lucide.dev/) - For the beautiful icon library
+- [Vitest](https://vitest.dev/) - For the fast testing framework

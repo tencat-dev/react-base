@@ -19,9 +19,9 @@ export default defineConfig({
         },
       },
     },
-    input: {
-      validation: false,
-      target: "../.open-api/open-api.json",
-    },
+    // input: {
+    //   validation: false,
+    //   target: "../.open-api/open-api.json",
+    // },
   },
 });

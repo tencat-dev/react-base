@@ -6,11 +6,12 @@ RUN bun install --frozen-lockfile
 
 COPY . .
 
+ENV NODE_ENV production
+
 RUN bun run build \
     && bun pm cache clean && rm -rf src test
 
 FROM nginx:alpine-slim AS runner
-ENV NODE_ENV production
 
 RUN rm -rf /var/log/nginx/*
 

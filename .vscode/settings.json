@@ -7,5 +7,7 @@
   },
   "files.readonlyInclude": {
     "**/routeTree.gen.ts": true
-  }
+  },
+  "biome.lsp.bin": "/home/minh/Documents/tencat/react-base/node_modules/@biomejs/cli-linux-x64-musl/biome",
+  "editor.defaultFormatter": "biomejs.biome"
 }

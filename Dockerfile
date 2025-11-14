@@ -5,14 +5,16 @@ COPY package.json bun.lock ./
 RUN bun install --frozen-lockfile
 
 COPY . .
-RUN bun run build
-RUN bun pm cache clean && rm -rf src test
 
+RUN bun run build \
+    && bun pm cache clean && rm -rf src test
 
-
-FROM nginx:stable-alpine AS runner
+FROM nginx:alpine-slim AS runner
 ENV NODE_ENV production
-COPY --from=builder /app/dist /usr/share/nginx/html
+
+RUN rm -rf /var/log/nginx/*
+
+COPY --from=builder --chown=nginx:nginx /app/dist /usr/share/nginx/html
 
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]

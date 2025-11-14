@@ -1,0 +1,1 @@
+{"root":["./knip.config.ts","./orval.config.ts","./vite.config.ts","./src/reportWebVitals.ts","./src/routeTree.gen.ts","./src/lib/utils.ts","./src/services/apis/axios-client.ts","./src/main.tsx","./src/components/Header.tsx","./src/routes/__root.tsx","./src/routes/index.tsx"],"version":"5.9.3"}

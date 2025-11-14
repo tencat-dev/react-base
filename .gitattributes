@@ -1,0 +1,52 @@
+# Auto detect text files and perform LF normalization
+* text=auto eol=lf
+
+# Custom for Visual Studio
+*.cs diff=csharp
+*.sln merge=union
+*.csproj merge=union
+*.vbproj merge=union
+*.fsproj merge=union
+*.dbproj merge=union
+
+# Standard to msysgit
+*.docx filter=docx diff=docx
+*.doc filter=doc diff=doc
+*.odt filter=odt diff=odt
+*.rtf filter=rtf diff=rtf
+*.pdf filter=pdf diff=pdf
+
+# Denote all files that are truly binary and should not be modified.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.svg binary
+*.webp binary
+*.avif binary
+
+# Denote files that should not be normalized
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Specific for various file types
+*.js text eol=lf
+*.jsx text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.toml text eol=lf
+*.lock text eol=lf
+*.css text eol=lf
+*.scss text eol=lf
+*.html text eol=lf
+*.xml text eol=lf
+*.svg text eol=lf
+
+# Ignore changes to specific files
+devenv.lock export-ignore
+bun.lock export-ignore

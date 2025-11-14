@@ -1,0 +1,10 @@
+services:
+  react-base:
+    container_name: react-base
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runner
+    ports:
+      - "3000:80"
+    restart: no

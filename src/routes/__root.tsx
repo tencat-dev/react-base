@@ -4,6 +4,7 @@ import { TanStackDevtools } from '@tanstack/react-devtools'
 
 import Header from '../components/Header'
 
+//TODO: add TanstackRouterQueryPanel
 export const Route = createRootRoute({
   component: () => (
     <>

@@ -11,11 +11,11 @@ import { routeTree } from './routeTree.gen'
 
 import { AxiosError } from 'axios'
 import { toast } from 'sonner'
-import reportWebVitals from './reportWebVitals.ts'
-import './styles.css'
-import { handleServerError } from './lib/handle-server-error.ts'
 import { FontProvider } from './context/font-provider.tsx'
 import { ThemeProvider } from './context/theme-provider.tsx'
+import { handleServerError } from './lib/handle-server-error.ts'
+import reportWebVitals from './reportWebVitals.ts'
+import './styles.css'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -110,4 +110,4 @@ if (rootElement && !rootElement.innerHTML) {
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals()
+process.env.NODE_ENV !== 'production' && reportWebVitals()

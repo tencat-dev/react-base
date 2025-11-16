@@ -3,18 +3,19 @@ import { createRootRoute, Outlet } from '@tanstack/react-router'
 import Header from '@/components/Header'
 import { GeneralError } from '@/features/errors/general'
 import { NotFoundError } from '@/features/errors/not-found'
-import { lazy, Suspense } from 'react'
+import { lazy } from 'react'
 
-const Devtool = lazy(() => import('@/components/devtool'))
+const Devtool =
+  process.env.NODE_ENV !== 'production'
+    ? lazy(() => import('@/components/devtool'))
+    : () => null
 
 export const Route = createRootRoute({
   component: () => (
     <>
       <Header />
       <Outlet />
-      <Suspense fallback={null}>
-        <Devtool />
-      </Suspense>
+      <Devtool />
     </>
   ),
   notFoundComponent: NotFoundError,

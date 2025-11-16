@@ -12,21 +12,23 @@ export const Route = createRootRoute({
     <>
       <Header />
       <Outlet />
-      <TanStackDevtools
-        config={{
-          position: 'bottom-right',
-        }}
-        plugins={[
-          {
-            name: 'Tanstack Router',
-            render: <TanStackRouterDevtoolsPanel />,
-          },
-          {
-            name: 'Tanstack Query',
-            render: <ReactQueryDevtoolsPanel />,
-          },
-        ]}
-      />
+      {process.env.NODE_ENV !== 'production' && (
+        <TanStackDevtools
+          config={{
+            position: 'bottom-right',
+          }}
+          plugins={[
+            {
+              name: 'Tanstack Router',
+              render: <TanStackRouterDevtoolsPanel />,
+            },
+            {
+              name: 'Tanstack Query',
+              render: <ReactQueryDevtoolsPanel />,
+            },
+          ]}
+        />
+      )}
     </>
   ),
   notFoundComponent: NotFoundError,

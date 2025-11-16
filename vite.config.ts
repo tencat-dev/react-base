@@ -27,7 +27,7 @@ export default defineConfig({
         algorithm: 'brotliCompress',
       }),
 
-    analyzer(),
+    process.env.NODE_ENV !== 'production' && analyzer(),
   ],
   resolve: {
     alias: {

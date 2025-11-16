@@ -1,8 +1,8 @@
 # React Base
 
-[![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/tencat/react-base/actions)
-[![Version](https://img.shields.io/github/package-json/v/tencat/react-base)](https://github.com/tencat/react-base)
-[![License](https://img.shields.io/github/license/tencat/react-base)](LICENSE)
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/tencat-dev/react-base/actions)
+[![Version](https://img.shields.io/github/package-json/v/tencat-dev/react-base)](https://github.com/tencat-dev/react-base)
+[![License](https://img.shields.io/github/license/tencat-dev/react-base)](LICENSE)
 [![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)](https://reactjs.org)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)](https://www.typescriptlang.org/)
 
@@ -146,8 +146,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact & Support
 
-- Project Repository: [GitHub](https://github.com/tencat/react-base)
-- Issues: [GitHub Issues](https://github.com/tencat/react-base/issues)
+- Project Repository: [GitHub](https://github.com/tencat-dev/react-base)
+- Issues: [GitHub Issues](https://github.com/tencat-dev/react-base/issues)
 - Documentation: [README](README.md) and source code comments
 
 For additional support, please open an issue in the GitHub repository.

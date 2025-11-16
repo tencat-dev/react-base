@@ -1,10 +1,10 @@
 services:
   react-base:
     container_name: react-base
+    image: tencat-dev/react-base:latest
     build:
       context: .
       dockerfile: Dockerfile
-      target: runner
     ports:
       - "3000:3000"
     restart: no

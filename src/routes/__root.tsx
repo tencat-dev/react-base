@@ -1,34 +1,20 @@
-import { TanStackDevtools } from '@tanstack/react-devtools'
-import { ReactQueryDevtoolsPanel } from '@tanstack/react-query-devtools'
-import { Outlet, createRootRoute } from '@tanstack/react-router'
-import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
+import { createRootRoute, Outlet } from '@tanstack/react-router'
 
+import Header from '@/components/Header'
 import { GeneralError } from '@/features/errors/general'
 import { NotFoundError } from '@/features/errors/not-found'
-import Header from '../components/Header'
+import { lazy, Suspense } from 'react'
+
+const Devtool = lazy(() => import('@/components/devtool'))
 
 export const Route = createRootRoute({
   component: () => (
     <>
       <Header />
       <Outlet />
-      {process.env.NODE_ENV !== 'production' && (
-        <TanStackDevtools
-          config={{
-            position: 'bottom-right',
-          }}
-          plugins={[
-            {
-              name: 'Tanstack Router',
-              render: <TanStackRouterDevtoolsPanel />,
-            },
-            {
-              name: 'Tanstack Query',
-              render: <ReactQueryDevtoolsPanel />,
-            },
-          ]}
-        />
-      )}
+      <Suspense fallback={null}>
+        <Devtool />
+      </Suspense>
     </>
   ),
   notFoundComponent: NotFoundError,

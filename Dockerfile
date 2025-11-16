@@ -8,14 +8,27 @@ COPY . .
 
 ENV NODE_ENV production
 
-RUN bun run build \
-    && bun pm cache clean && rm -rf src test
+RUN bun run build && \
+		test -d dist && test -f dist/index.html && \
+    bun pm cache clean && rm -rf src test && \
+		find dist -type f \( \
+		-name "*.html" -o \
+		-name "*.css" -o \
+		-name "*.js" -o \
+		-name "*.json" -o \
+		-name "*.xml" -o \
+		-name "*.txt" -o \
+		-name "*.svg" \
+		\) -exec sh -c 'gzip -9 "{}"' \;
 
-FROM nginx:alpine-slim AS runner
+# ==============================================================================
+# Production Stage - Using lipanski/docker-static-website for extreme minimal footprint (92.5 KB base)
+# ==============================================================================
+FROM lipanski/docker-static-website:latest AS runner
 
-RUN rm -rf /var/log/nginx/*
+# Copy built assets from builder stage
+# lipanski/docker-static-website serves from /home/static
+COPY --from=builder /app/dist /home/static
 
-COPY --from=builder --chown=nginx:nginx /app/dist /usr/share/nginx/html
-
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+# Expose port (BusyBox httpd uses port 3000 by default)
+EXPOSE 3000

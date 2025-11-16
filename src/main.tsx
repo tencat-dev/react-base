@@ -17,7 +17,6 @@ import { handleServerError } from './lib/handle-server-error.ts'
 import { FontProvider } from './context/font-provider.tsx'
 import { ThemeProvider } from './context/theme-provider.tsx'
 
-//TODO: add queryClient
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {

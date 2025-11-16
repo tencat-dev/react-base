@@ -59,12 +59,14 @@ const queryClient = new QueryClient({
         if (error.response?.status === 500) {
           toast.error('Internal Server Error!')
           // Only navigate to error page in production to avoid disrupting HMR in development
-          // if (import.meta.env.PROD) {
-          //   router.navigate({ to: '/500' })
-          // }
+          if (import.meta.env.PROD) {
+            router.navigate({ to: '/500' })
+          }
         }
         if (error.response?.status === 403) {
-          // router.navigate("/forbidden", { replace: true });
+          if (import.meta.env.PROD) {
+            router.navigate({ to: '/403' })
+          }
         }
       }
     },

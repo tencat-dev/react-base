@@ -1,7 +1,12 @@
 {
   "$schema": "https://biomejs.dev/schemas/2.0.5/schema.json",
   "files": {
-    "includes": ["**", "!**/*.generated.js", "!**/*.gen.ts"]
+    "includes": [
+      "**",
+      "!**/*.generated.js",
+      "!**/*.gen.ts",
+      "!src/services/apis/gen/queries.ts"
+    ]
   },
   "formatter": {
     "enabled": true,
@@ -23,13 +28,13 @@
   },
   "javascript": {
     "formatter": {
+      "quoteStyle": "single",
       "jsxQuoteStyle": "single",
       "quoteProperties": "asNeeded",
       "trailingCommas": "es5",
       "semicolons": "asNeeded",
       "arrowParentheses": "always",
       "bracketSameLine": false,
-      "quoteStyle": "single",
       "attributePosition": "auto",
       "bracketSpacing": true
     }

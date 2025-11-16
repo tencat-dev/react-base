@@ -1,4 +1,5 @@
 {pkgs, ...}: {
+  env.BIOME_BINARY = "@biomejs/cli-linux-x64-musl/biome";
   packages = [pkgs.git];
 
   languages.javascript = {

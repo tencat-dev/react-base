@@ -39,17 +39,14 @@ export default defineConfig({
 
     rollupOptions: {
       output: {
-        manualChunks(id) {
-          if (id.includes("node_modules")) {
-            if (id.includes("react")) return "react";
-            if (id.includes("@tanstack/react-router")) return "react-router";
-            if (id.includes("@tanstack/react-query")) return "react-query";
-            if (id.includes("@tanstack/react-table")) return "react-table";
-            if (id.includes("@tanstack/react-form")) return "react-form";
-            if (id.includes("zod")) return "zod";
-            if (id.includes("lucide-react")) return "icons";
-            return "vendor";
-          }
+        manualChunks: {
+          react: ["react", "react-dom"],
+          "react-router": ["@tanstack/react-router"],
+          "react-query": ["@tanstack/react-query"],
+          "react-table": ["@tanstack/react-table"],
+          "react-form": ["@tanstack/react-form"],
+          zod: ["zod"],
+          icons: ["lucide-react"],
         },
       },
     },

@@ -22,7 +22,7 @@
     "useEditorconfig": true
   },
   "linter": {
-    "enabled": false,
+    "enabled": true,
     "rules": { "recommended": false },
     "includes": ["**", "!dist", "!src/components/ui"]
   },

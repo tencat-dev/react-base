@@ -2,7 +2,10 @@
 inputs:
   nixpkgs:
     url: github:cachix/devenv-nixpkgs/rolling
-
+  nodeslim-24:
+    url: github:NixOS/nixpkgs/6f374686605df381de8541c072038472a5ea2e2d
+  bun-132:
+    url: github:NixOS/nixpkgs/1d4c88323ac36805d09657d13a5273aea1b34f0c
 # If you're using non-OSS software, you can set allowUnfree to true.
 # allowUnfree: true
 
